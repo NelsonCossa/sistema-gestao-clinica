@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color: #f8f9fa;">
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+       aria-hidden="true" th:fragment="modal">
+    <div class="modal-dialog" role="document" style="top: 15%;">
+      <div class="modal-content" style="border-radius: 10px; box-shadow: 0px 5px 20px rgba(0,0,0,0.3);">
+        
+        <!-- Cabeçalho -->
+        <div class="modal-header" style="background-color: #007bff; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+          <h5 class="modal-title" id="modalLabel">
+            <i class="fas fa-exclamation-circle"></i> Confirmação de Ação
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="color: white; opacity: 0.8;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- Corpo -->
+        <div class="modal-body text-center" style="padding: 25px; font-size: 16px; color: #333;">
+          <div style="font-size: 45px; color: #007bff; margin-bottom: 10px;">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <p>Tem a certeza de que deseja prosseguir com esta operação?<br>
+          Esta ação <strong>não poderá ser revertida</strong>.</p>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="modal-footer justify-content-center" style="padding: 15px; border-top: 1px solid #dee2e6;">
+          <button type="button" class="btn"
+                  data-dismiss="modal"
+                  style="background-color: #dc3545; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-weight: 500;">
+            Cancelar
+          </button>
+
+          <button id="ok_confirm" type="button" class="btn"
+                  style="background-color: #007bff; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-weight: 500;">
+            Confirmar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Exibir modal automaticamente -->
+  <script>
+    $(document).ready(function () {
+      $('#myModal').modal('show');
+    });
+  </script>
+
+</body>
+</html>

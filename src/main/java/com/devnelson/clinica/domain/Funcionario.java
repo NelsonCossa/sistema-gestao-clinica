@@ -3,6 +3,11 @@ package com.devnelson.clinica.domain;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,10 +26,12 @@ public class Funcionario extends AbstractEntity<Long> {
 	private String nome;
 	
 	
+	@NumberFormat(pattern = "#,##0.00")
 	@Column(nullable=false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private BigDecimal salario;
 	
-	
+	@DateTimeFormat(iso=ISO.DATE)
+	 
 	@Column(name="data_entrada", nullable=false, columnDefinition = "DATE")
 	private LocalDate dataEntrada;
 	

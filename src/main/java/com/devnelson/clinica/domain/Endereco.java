@@ -27,7 +27,7 @@ public class Endereco extends AbstractEntity<Long> {
 	@Enumerated(EnumType.STRING)
 	private UF uf;
 	
-	@Column(nullable=false, length=2)
+	@Column(nullable=false, length=9)
 	private String cep;
 	
 	
