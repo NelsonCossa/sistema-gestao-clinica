@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.format.annotation.NumberFormat;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,6 +15,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -22,28 +27,34 @@ import jakarta.persistence.Table;
 @Table(name="FUNCIONARIOS")
 public class Funcionario extends AbstractEntity<Long> {
 	
-	@Column(nullable=false, unique=true)
+	@NotBlank(message = "{javax.validation.constraints.NotBlank.message}")
+	@Size(max = 255, min = 3, message = "{javax.validation.constraints.Size.message}")
+	@Column(nullable = false, unique = true)
 	private String nome;
-	
-	
+
+	@NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@NumberFormat(pattern = "#,##0.00")
 	@Column(nullable=false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private BigDecimal salario;
-	
-	@DateTimeFormat(iso=ISO.DATE)
-	 
-	@Column(name="data_entrada", nullable=false, columnDefinition = "DATE")
+
+	@NotNull(message = "{javax.validation.constraints.NotNull.message}")
+	@PastOrPresent(message = "{PastOrPresent.funcionario.dataEntrada}")
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name= "data_entrada", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrada;
-	
-	@Column(name="data_saida", nullable=true, columnDefinition = "DATE")
+
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "data_saida", columnDefinition = "DATE")
 	private LocalDate dataSaida;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="endereco_id_fk")
+
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;
-	
+
+	@NotNull(message = "{NotNull.funcionario.cargo}")
 	@ManyToOne
-	@JoinColumn(name="cargo_id_fk")
+	@JoinColumn(name = "cargo_id_fk")
 	private Cargo cargo;
 
 	public String getNome() {
