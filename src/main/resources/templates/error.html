@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="/image/favicon.png" />
+
+    <title th:text="${status}"></title>
+
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f5f7fa; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .error-card {
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .error-icon {
+            font-size: 50px;
+            color: #d9534f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-card text-center">
+        
+        <div class="error-icon mb-3">
+            <i class="oi oi-warning"></i>
+        </div>
+
+        <h1 class="h4 mb-2">
+            Erro <span th:text="${status}"></span>
+        </h1>
+
+        <h2 class="h6 text-muted mb-3" th:text="${error}"></h2>
+
+        <p class="mb-4" th:text="${message}"></p>
+
+        <a class="btn btn-primary btn-block" href="javascript:history.back()">
+            Voltar à página anterior
+        </a>
+    </div>
+</body>
+</html>

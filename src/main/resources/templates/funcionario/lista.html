@@ -35,48 +35,8 @@
 	<div class="layout-main">
 	
 	    <aside>
-	        <nav class="sidebar  sidebar-open">
-	            <ul class="nav nav-pills">
-	                <li class="nav-item"><a class="nav-link " href="/"> <i
-	                        class="oi oi-home"></i> <span>Home</span>
-	                </a></li>
-	            </ul>
-	
-	            <ul class="nav nav-pills">
-	                <li class="nav-item"><span class="nav-link active">Departamentos</span></li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/departamentos/cadastrar"> <i class="oi oi-plus"></i>
-	                    <span>Cadastrar</span>
-	                </a></li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/departamentos/listar"> <i class="oi oi-spreadsheet"></i>
-	                    <span>Listar </span>
-	                </a></li>
-	            </ul>
-	
-	            <ul class="nav nav-pills">
-	                <li class="nav-item"><span class="nav-link active">Cargos</span></li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/cargos/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
-	                </a></li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/cargos/listar"> <i
-	                        class="oi oi-spreadsheet"></i> <span>Listar </span>
-	                </a></li>
-	            </ul>
-	
-	            <ul class="nav nav-pills">
-	                <li class="nav-item"><span class="nav-link active">Funcionários</span></li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/funcionarios/cadastrar"> <i class="oi oi-plus"></i>
-	                    <span>Cadastrar </span>
-	                </a></li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/funcionarios/listar"> <i class="oi oi-spreadsheet"></i>
-	                    <span>Listar </span>
-	                </a></li>
-	            </ul>
-	        </nav>
+	           <nav th:replace="~{fragments/sidebar :: nav-sidebar}"></nav>
+
 	    </aside>
 	   <section class="layout-content" layout:fragment="corpo">
 	        <nav class="navbar navbar-expand-md bg-light">
@@ -172,9 +132,9 @@
 	                        <th>Departamento</th>
 	                        <th>Cargo</th>
 	                        <th>Endereço</th>
-	                        <th>Data de Entrada</th>
-	                        <th>Data de Saída</th>
-	                        <th>Ação</th>
+	                        <th>Admissão</th>
+	                        <th>Demissão</th>
+	                        <th>ACção</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>

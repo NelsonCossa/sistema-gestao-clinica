@@ -32,6 +32,39 @@ body {
 	padding-top: 20px;
 }
 
+
+
+
+
+
+
+
+/* Rodapé fixo e centralizado */
+.layout-footer {
+    position: fixed;        /* fixo na tela */
+    bottom: 0;              /* na parte inferior */
+    left: 50%;              /* centraliza horizontalmente */
+    transform: translateX(-50%); /* ajusta exatamente no centro */
+    height: 50px;           /* altura do rodapé */
+    background-color: #f8f9fa; /* fundo neutro */
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    align-items: center;    /* centraliza verticalmente o conteúdo */
+    justify-content: center; /* centraliza horizontalmente */
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.1); /* sombra leve */
+    width: auto; /* largura ajusta automaticamente ao conteúdo */
+}
+
+.footer-copy {
+    font-size: 92%;
+    color: #777777;
+    text-align: center;
+    margin: 0;
+}
+
+
 /*
  * Sidebar
 
@@ -61,86 +94,113 @@ body {
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
  */
-.sidebar {
-    width: 0px;
-    height: 100vh;
-    border-top: 1px solid #eee;
-    border-right: 1px solid #eee;    
-    background-color: #f8f9fa;
-    flex-shrink: 0;
-    overflow: hidden;
-    transition: width .5s;
-}
+ /* Sidebar corporativo clínico */
+ .sidebar {
+     width: 250px;
+     height: auto; /* ajusta automaticamente */
+     position: fixed;
+     top: 56px; /* abaixo do cabeçalho */
+     left: 0;
+     background: linear-gradient(180deg, #0056b3 0%, #007BFF 100%);
+     color: #fff;
+     border-right: 2px solid #0069d9;
+     padding-top: 5px; /* mais próximo do topo */
+     overflow: hidden; /* desabilita scroll */
+     box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+     z-index: 1000;
+     transition: all 0.3s ease;
+ }
 
-.sidebar .nav {
-	margin-bottom: 0px;
-}
+ /* Seções: Departamentos, Cargos, Funcionários */
+ .menu-section {
+     margin: 3px 10px; /* reduz ainda mais margem superior/inferior */
+     padding: 6px; /* diminui padding interno */
+     background: rgba(255,255,255,0.08);
+     border-radius: 10px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+     transition: all 0.3s ease;
+ }
 
-.sidebar .nav-item {
-	width: 100%;
-}
+ /* Título da seção */
+ .menu-title {
+     font-weight: 600;
+     color: #ffffff;
+     font-size: 14px;
+     text-align: center;
+     margin-bottom: 3px; /* diminui espaço abaixo do título */
+ }
 
-.sidebar .nav-item {
-	margin-left: 0;
-}
+ /* Botões de ação */
+ .menu-icons {
+     display: flex;
+     justify-content: center;
+     gap: 6px; /* reduz espaço entre botões */
+ }
 
-.sidebar .nav-link {
-	border-radius: 0;
-} 
+ .menu-btn {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     min-height: 80px;
+     border-radius: 10px;
+     background: rgba(255, 255, 255, 0.1); /* fundo leve transparente */
+     color: #ffffff; /* texto branco brilhante para fácil leitura */
+     text-decoration: none;
+     font-size: 16px;
+     font-weight: 600;
+     transition: all 0.3s ease;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ }
 
-.sidebar ul li:hover a, .menu ul li.active a{
-    color: #777777;
-}
+ .menu-btn i {
+     font-size: 24px;
+     margin-bottom: 5px;
+     color: #e0e0e0; /* ícone em tom claro */
+ }
+ 
+ .menu-btn.active i {
+     color: #0056b3;
+ }
 
-.sidebar ul{
-    list-style: none;
-    padding: 10px 0px;
-}
+ .menu-btn:hover {
+     background: #ffffff; /* fundo branco */
+     color: #0056b3; /* texto azul escuro */
+     transform: scale(1.05);
+ }
 
-.sidebar ul li a{
-    display: block;
-    color:#1a1a1a;
-    padding: 10px 15px;
-    white-space: nowrap;
-}
+ .menu-btn:hover i {
+    
+	 color: #0056b3;
+ }
 
-.sidebar.sidebar-open {
-    width: 300px;
-}
+ /* Item ativo */
+ .menu-btn.active,
+ .menu-section.active {
 
-/*
- * nav-pills home
- */
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-	color: #fff;
-	background-color: #1e94d2;
-}
+	    border-left: 4px solid #80bdff;
+	    background: #ffffff; /* fundo claro */
+	    color: #0056b3; /* texto azul escuro */
+	    font-weight: 700;
+	    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+	}
+ 
+ /* Espaçamento geral para conteúdo */
+ .layout-content {
+     margin-left: 250px; /* corresponde à largura do menu */
+     padding: 25px;
+     transition: all 0.3s ease;
+ }
 
-/*
- * toogle do navbar do menu
- */ 
-
-.navbar-toggle {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-/*
- * Footer
- */
-.layout-footer {
-	position: relative;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 0;
-	height: 50px;
-	border-top: 1px solid #eeeeee;
-}
-
-.footer-copy {
-	font-size: 92%;
-	display: block;
-	color: #777777;
-	text-align: center;
-}
+ /* Scrollbar discreta (não deve aparecer) */
+ .sidebar::-webkit-scrollbar {
+     width: 6px;
+ }
+ .sidebar::-webkit-scrollbar-thumb {
+     background-color: rgba(255,255,255,0.4);
+     border-radius: 4px;
+ }
+ .sidebar::-webkit-scrollbar-thumb:hover {
+     background-color: rgba(255,255,255,0.6);
+ }
